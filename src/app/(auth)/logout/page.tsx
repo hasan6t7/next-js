@@ -12,7 +12,7 @@ const Logout = () => {
     router.push("/");
   };
   return (
-    <div>
+    <div>     
       <button
         onClick={handleLogOut}
         className="bg-gray-600 text-white px-5 py-1.5 rounded-xl border-none"
