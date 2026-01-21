@@ -1,4 +1,6 @@
+"use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 type NavLinks = {
@@ -13,15 +15,22 @@ const navlinks: NavLinks[] = [
 ];
 
 const Navbar = () => {
+  const pathname = usePathname();
+  console.log(pathname);
   return (
-    <header className="flex justify-between items-center max-w-7xl mx-auto">
+    <header className="flex justify-between items-center max-w-7xl mx-auto border-b p-2">
       <div className="text-3xl font-bold">
         <Link href="/">Next js</Link>
       </div>
       <ul className="flex items-center gap-3">
         {navlinks.map((item, ind) => (
           <li key={ind}>
-            <Link href={item.href}>{item.name}</Link>
+            <Link
+              className={`link ${pathname === item.href ? "pb-1 border-b" : ""}`}
+              href={item.href}
+            >
+              {item.name}
+            </Link>
           </li>
         ))}
       </ul>
